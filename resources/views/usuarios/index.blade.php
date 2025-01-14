@@ -66,6 +66,7 @@
                 <label for="arquivo" class="block text-lg font-medium text-gray-700">Escolha um arquivo (CSV, XLS, XLSX):</label>
                 <input type="file" name="arquivo" id="arquivo" class="mt-2 p-2 w-full border border-gray-300 rounded-md" required>
             </div>
+            <input type="hidden" name="tabela" value="usuarios" id="tabela">
             <button type="submit" class="bg-blue-500 text-white py-2 px-6 rounded-md hover:bg-blue-600 transition">Importar</button>
         </form>
     </div>

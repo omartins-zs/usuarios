@@ -25,6 +25,7 @@ class UploadController extends Controller
 
         // Obtendo o arquivo e preparando a requisição
         $file = $request->file('arquivo');
+        $tabela = $request->input('tabela');
 
         Log::info('Iniciando envio do arquivo para o projeto 2', [
             'arquivo' => $file->getClientOriginalName(),
@@ -34,6 +35,8 @@ class UploadController extends Controller
         // Enviando o arquivo para o projeto 2
         $response = Http::attach('arquivo', file_get_contents($file), 'arquivo.' . $file->getClientOriginalExtension())
                         ->post('http://127.0.0.1:8002/api/importar-arquivo');
+
+        Log::debug('Dados recebidos', ['request_data' => $request->all()]);
 
         // Verificando a resposta da API do projeto 2
         if ($response->successful()) {
